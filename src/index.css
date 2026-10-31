@@ -1,0 +1,76 @@
+@import 'leaflet/dist/leaflet.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Marine Leaflet Popup Styling */
+.leaflet-popup-content-wrapper {
+  background: #04162e !important;
+  color: #f1f5f9 !important;
+  border-radius: 1rem !important;
+  border: 1px solid #1e3a8a !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5) !important;
+  padding: 0 !important;
+}
+
+.leaflet-popup-tip {
+  background: #04162e !important;
+  border: 1px solid #1e3a8a !important;
+}
+
+.leaflet-popup-content {
+  margin: 0 !important;
+  line-height: 1.4 !important;
+}
+
+.leaflet-container {
+  font-family: inherit !important;
+  z-index: 10 !important;
+}
+
+@layer base {
+  body {
+    @apply bg-[#f0f4f9] text-slate-800 font-sans min-h-screen overflow-x-hidden;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+}
+
+/* Custom ocean scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Underwater bubble effect */
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+.animate-float-slow {
+  animation: floatUp 4s infinite ease-in-out;
+}
+
+.animate-float-fast {
+  animation: floatUp 2.5s infinite ease-in-out;
+}

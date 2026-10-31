@@ -1,0 +1,23 @@
+# SONARIS - model & inference configuration
+# Swap model versions here without touching any code (spec section 19-21).
+# When Phase 2 produces a better model, just update these paths -
+# the API response format never changes.
+
+models:
+  multiclass: models/active/multiclass/best.pt
+  pipeline_specialist: models/active/pipeline/best.pt
+
+inference:
+  imgsz: 640
+  confidence: 0.25          # MULTICLASS_CONF - do not expose detections below this as "confirmed"
+  pipeline_confidence: 0.25 # PIPELINE_CONF
+  iou: 0.45
+
+# Fixed class ID maps - DO NOT reorder or rename these (spec section 2 & 6).
+# class_id is authoritative and comes straight from the trained checkpoints.
+classes:
+  multiclass:
+    0: marine_debris
+    1: crab_pot
+  pipeline_specialist:
+    0: Pipeline
